@@ -1,0 +1,381 @@
+/* NusaStat: a statistics-yearbook look — warm paper, deep teal, amber accents,
+   serif headlines over a plain system sans. No web fonts, no images.
+   The file is laid out top to bottom as the page is: page chrome first
+   (header, navigation), then the content pieces (headings, KPI cards, panels,
+   charts, facts, notes), then the footer, then the explorer table, and the
+   phone overrides last so they win over everything above them. */
+
+:root {
+  --paper: #f7f4ec;
+  --card: #fffdf8;
+  --ink: #14261f;
+  --muted: #5c6b66;
+  --line: #e3e0d6;
+  --amber: #d98e1f;
+  --amber-soft: #f6e8c8;
+  --teal: #0e5f56;
+  --teal-dark: #0a463f;
+  --red: #a83c22;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font: 17px/1.6 system-ui, -apple-system, "Segoe UI", sans-serif;
+}
+
+.wrap {
+  max-width: 1020px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+h1, h2, h3 {
+  font-family: Georgia, "Times New Roman", serif;
+  line-height: 1.2;
+  color: var(--teal-dark);
+}
+
+h1 {
+  font-size: 2.1rem;
+  margin: 0.2em 0 0.4em;
+}
+
+h2 {
+  font-size: 1.35rem;
+  margin: 0 0 0.5em;
+}
+
+a { color: var(--teal); }
+a:hover { color: var(--red); }
+
+/* Header and navigation */
+
+.site-header {
+  background: var(--teal-dark);
+  color: #fff;
+  border-bottom: 4px solid var(--amber);
+}
+
+.header-inner {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px 28px;
+  padding-top: 14px;
+  padding-bottom: 14px;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color: #fff;
+  text-decoration: none;
+}
+
+.brand-mark {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 8px;
+  background: var(--amber);
+  color: var(--teal-dark);
+  font-family: Georgia, serif;
+  font-size: 1.5rem;
+  font-weight: 700;
+}
+
+.brand-text {
+  font-family: Georgia, serif;
+  font-size: 1.5rem;
+  font-weight: 700;
+  line-height: 1.05;
+}
+
+.brand-text small {
+  display: block;
+  font-family: system-ui, sans-serif;
+  font-size: 0.72rem;
+  font-weight: 400;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: #cfe3dc;
+}
+
+.site-nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px 4px;
+  margin-left: auto;
+}
+
+.site-nav a {
+  color: #dcebe4;
+  text-decoration: none;
+  font-size: 0.95rem;
+  padding: 7px 11px;
+  border-radius: 6px;
+}
+
+.site-nav a:hover {
+  background: rgba(255, 255, 255, 0.12);
+  color: #fff;
+}
+
+.site-nav a[aria-current="page"] {
+  background: var(--amber);
+  color: var(--teal-dark);
+  font-weight: 600;
+}
+
+/* Main content */
+
+main { padding: 28px 20px 56px; }
+
+.kicker {
+  margin: 0;
+  font-size: 0.82rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--amber);
+}
+
+.lede {
+  font-size: 1.15rem;
+  color: #33463f;
+  max-width: 62ch;
+}
+
+/* KPI cards */
+
+.kpi-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 14px;
+  margin: 26px 0;
+}
+
+.kpi {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-top: 4px solid var(--teal);
+  border-radius: 10px;
+  padding: 16px 18px 14px;
+  text-decoration: none;
+  color: inherit;
+}
+
+.kpi:hover { border-top-color: var(--amber); }
+
+.kpi-label {
+  font-size: 0.82rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.kpi-value {
+  font-family: Georgia, serif;
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--teal-dark);
+  line-height: 1.1;
+}
+
+.kpi-unit { font-size: 1rem; font-weight: 400; color: var(--muted); }
+.kpi-context { font-size: 0.88rem; color: var(--muted); }
+
+/* Panels, charts, facts */
+
+.panel {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  padding: 22px 24px;
+  margin: 22px 0;
+}
+
+.panel-unit { margin: -0.4em 0 1em; font-size: 0.9rem; color: var(--muted); }
+
+.source {
+  margin: 1em 0 0;
+  font-size: 0.85rem;
+  color: var(--muted);
+  border-top: 1px dashed var(--line);
+  padding-top: 0.7em;
+}
+
+.chart-svg { display: block; width: 100%; height: auto; }
+
+.bar-chart { display: flex; flex-direction: column; gap: 10px; }
+.bar-row {
+  display: grid;
+  grid-template-columns: 15em 1fr 5.5em;
+  align-items: center;
+  gap: 12px;
+}
+.bar-label { font-size: 0.92rem; }
+.bar-track {
+  background: #efece2;
+  border-radius: 4px;
+  height: 22px;
+  overflow: hidden;
+}
+.bar-fill { height: 100%; border-radius: 4px; }
+.bar-value { font-weight: 700; text-align: right; color: var(--teal-dark); }
+
+.highlights { margin: 0; padding-left: 1.2em; }
+.highlights li { margin-bottom: 0.7em; }
+.highlights li:last-child { margin-bottom: 0; }
+
+.facts {
+  display: grid;
+  grid-template-columns: 13em 1fr;
+  gap: 10px 18px;
+  margin: 0;
+}
+.facts dt { font-weight: 700; color: var(--teal-dark); }
+.facts dd { margin: 0; }
+
+.note {
+  background: var(--amber-soft);
+  border-left: 5px solid var(--amber);
+  border-radius: 0 10px 10px 0;
+  padding: 18px 22px;
+  margin: 22px 0;
+}
+.note h2 { margin-top: 0; }
+.note p:last-child { margin-bottom: 0; }
+
+.sources { margin: 0; padding-left: 1.2em; }
+.sources li { margin-bottom: 0.9em; }
+.sources li:last-child { margin-bottom: 0; }
+
+/* Footer */
+
+.site-footer {
+  background: var(--teal-dark);
+  color: #cfe3dc;
+  font-size: 0.9rem;
+  padding: 26px 0 34px;
+}
+.site-footer strong { color: #fff; }
+.site-footer a { color: #ffd98a; }
+.site-footer p { max-width: 78ch; }
+
+/* Explorer */
+
+.explorer-controls {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  gap: 14px;
+  margin: 20px 0 8px;
+}
+
+.control {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--muted);
+}
+
+.control input,
+.control select {
+  font: inherit;
+  font-weight: 400;
+  color: var(--ink);
+  background: var(--card);
+  border: 1px solid #c9c4b4;
+  border-radius: 6px;
+  padding: 8px 10px;
+  min-width: 16em;
+}
+
+.control input:focus,
+.control select:focus {
+  outline: 2px solid var(--teal);
+  outline-offset: 1px;
+}
+
+.button {
+  font: inherit;
+  font-weight: 600;
+  color: #fff;
+  background: var(--teal);
+  border: none;
+  border-radius: 6px;
+  padding: 9px 16px;
+  cursor: pointer;
+}
+
+.button:hover { background: var(--teal-dark); }
+
+.count { font-size: 0.92rem; color: var(--muted); }
+
+.table-wrap { overflow-x: auto; margin: 8px 0 4px; }
+
+.data-table {
+  width: 100%;
+  border-collapse: collapse;
+  background: var(--card);
+  font-size: 0.95rem;
+}
+
+.data-table th,
+.data-table td {
+  text-align: left;
+  padding: 9px 12px;
+  border-bottom: 1px solid var(--line);
+  vertical-align: top;
+}
+
+.data-table thead th {
+  background: var(--teal-dark);
+  color: #fff;
+  position: sticky;
+  top: 0;
+}
+
+.data-table th button {
+  all: unset;
+  cursor: pointer;
+  font-weight: 700;
+  color: #fff;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.data-table tbody tr:nth-child(even) { background: #faf7ef; }
+.data-table td.num { text-align: right; white-space: nowrap; font-variant-numeric: tabular-nums; }
+
+/* Phones */
+
+@media (max-width: 760px) {
+  body { font-size: 16px; }
+  h1 { font-size: 1.65rem; }
+  .site-nav { margin-left: 0; }
+  .site-nav a { padding: 6px 8px; font-size: 0.88rem; }
+  .kpi-grid { grid-template-columns: 1fr; }
+  .panel { padding: 18px 16px; }
+  .bar-row { grid-template-columns: 1fr; gap: 4px; }
+  .bar-value { text-align: left; }
+  .facts { grid-template-columns: 1fr; gap: 2px 0; }
+  .facts dd { margin-bottom: 10px; }
+  .control input,
+  .control select { min-width: 0; width: 100%; }
+  .explorer-controls { flex-direction: column; align-items: stretch; }
+}
